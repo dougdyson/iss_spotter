@@ -50,21 +50,18 @@ const fetchMyCoordsByIP = function(ip, callback) {
  *     [ { risetime: 134564234, duration: 600 }, ... ]
  */
 const fetchISSFlyOverTimes = function(coords, callback) {
-  const url = `http://api.open-notify.org/iss-pass.json?lat=${coords.latitude}&lon=${coords.longitude}`;
-
-  request(url, (error, response, body) => {
-    if (error) {
-      callback(error, null);
-      return;
-    }
+  console.log(coords);
+  request('http://api.open-notify.org/iss-pass.json?lat=49.27670&lon=119.13000', (error, response, body) => {
+    if (error) return callback(error, null);
 
     if (response.statusCode !== 200) {
-      callback(Error(`Status Code ${response.statusCode} when fetching ISS pass times: ${body}`), null);
+      callback(Error(`Status Code ${response.statusCode} when fetching ISS flyover times: ${body}`), null);
       return;
     }
-
-    const passes = JSON.parse(body).response;
-    callback(null, passes);
+    let rtrnObj = JSON.parse(body);
+    //console.log(rtrnObj);
+    //coords = rtrnObj.data.lat + ', ' + rtrnObj.data.lon;
+    callback(null, rtrnObj);
   });
 };
 

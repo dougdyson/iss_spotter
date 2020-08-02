@@ -26,14 +26,6 @@ fetchMyCoordsByIP(myIP , (error, ip) => {
   console.log('It worked! Returned coords:' , coords);
 });
 
-fetchISSFlyOverTimes( exampleCoords, (error, coords) => {
-  if (error) {
-    console.log("It didn't work!" , error);
-    return;
-  }
-  console.log('It worked! Returned coords:' , coords);
-});
-
 fetchISSFlyOverTimes(exampleCoords, (error, passTimes) => {
   if (error) {
     console.log("It didn't work!" , error);
