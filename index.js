@@ -2,7 +2,7 @@
 
 // The code below is temporary and can be commented out.
 const { fetchMyIP } = require('./iss');
-const { fetchMyCoordsByIP } = require('./coords');
+const { fetchMyCoordsByIP } = require('./iss');
 const request = require('request');
 let myIP;
 
@@ -16,7 +16,7 @@ fetchMyIP((error, ip) => {
   myIP = ip;
 });
 
-fetchMyCoordsByIP((error, coords) => {
+fetchMyCoordsByIP( myIP, (error, coords) => {
   if (error) {
     console.log("It didn't work!" , error);
     return;

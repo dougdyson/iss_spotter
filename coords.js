@@ -8,7 +8,10 @@
  */
 const request = require('request');
 
-const fetchMyCoordsByIP = function(callback) {
+const fetchMyCoordsByIP = function(ip, callback) {
+ 
+  console.log(`https://ipvigilante.com/json/${ip}`);
+
   request('https://ipvigilante.com/24.84.206.8', (error, response, body) => {
     if (error) return callback(error, null);
 
